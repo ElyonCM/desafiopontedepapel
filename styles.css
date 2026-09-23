@@ -185,6 +185,8 @@ a{color:inherit;text-decoration:none}
   .timeline__n{display:none}
   .results__inner{grid-template-columns:1fr}
   .btn{width:100%}
+  .gallery{justify-items:center}
+  .gallery__item{width:100%;max-width:440px;height:auto;aspect-ratio:4/3;margin:0 auto}
 }
 @media (max-width:640px){.stats__item:last-child{grid-column:span 2}}
 @media (max-width:640px){
