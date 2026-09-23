@@ -47,3 +47,31 @@ lightbox.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
 });
+
+// Contagem regressiva — Entrega das pontes (19/10/2026)
+(function () {
+  // Data alvo: 19 de outubro de 2026, início do dia (horário de Brasília)
+  var TARGET = new Date("2026-10-19T00:00:00-03:00").getTime();
+  var daysEl = document.getElementById("countdown-days");
+  var labelEl = document.getElementById("countdown-label");
+
+  function update() {
+    var diff = TARGET - Date.now();
+
+    if (diff <= 0) {
+      daysEl.textContent = "🏁";
+      labelEl.textContent = "Dia da entrega!";
+      daysEl.style.animation = "none";
+      return;
+    }
+
+    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    daysEl.textContent = days;
+    labelEl.textContent = days === 1 ? "dia para a entrega" : "dias para a entrega";
+
+    // Atualiza a cada hora
+    setTimeout(update, 1000 * 60 * 60);
+  }
+
+  update();
+})();
