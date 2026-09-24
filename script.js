@@ -48,30 +48,43 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
 });
 
-// Contagem regressiva — Entrega das pontes (19/10/2026)
+// Contagem regressiva — Data final do evento (23/10/2026)
 (function () {
-  // Data alvo: 19 de outubro de 2026, início do dia (horário de Brasília)
-  var TARGET = new Date("2026-10-19T00:00:00-03:00").getTime();
-  var daysEl = document.getElementById("countdown-days");
+  // Data alvo: 23 de outubro de 2026 (Dia do teste de carga e divulgação dos resultados)
+  var TARGET = new Date("2026-10-23T00:00:00-03:00").getTime();
+  var timerEl = document.getElementById("countdown-timer");
   var labelEl = document.getElementById("countdown-label");
 
   function update() {
     var diff = TARGET - Date.now();
 
     if (diff <= 0) {
-      daysEl.textContent = "🏁";
-      labelEl.textContent = "Dia da entrega!";
-      daysEl.style.animation = "none";
+      if (timerEl) {
+        timerEl.textContent = "🏁 00d 00h 00m 00s";
+        timerEl.style.animation = "none";
+      }
+      if (labelEl) labelEl.textContent = "Evento finalizado!";
       return;
     }
 
     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    daysEl.textContent = days;
-    labelEl.textContent = days === 1 ? "dia para a entrega" : "dias para a entrega";
+    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Atualiza a cada hora
-    setTimeout(update, 1000 * 60 * 60);
+    var dStr = String(days).padStart(2, "0") + "d";
+    var hStr = String(hours).padStart(2, "0") + "h";
+    var mStr = String(minutes).padStart(2, "0") + "m";
+    var sStr = String(seconds).padStart(2, "0") + "s";
+
+    if (timerEl) {
+      timerEl.textContent = `${dStr} ${hStr} ${mStr} ${sStr}`;
+    }
+    if (labelEl) {
+      labelEl.textContent = "para o grande dia (23/10)";
+    }
   }
 
   update();
+  setInterval(update, 1000);
 })();
