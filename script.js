@@ -81,7 +81,7 @@ document.addEventListener("keydown", (e) => {
       timerEl.textContent = `${dStr} ${hStr} ${mStr} ${sStr}`;
     }
     if (labelEl) {
-      labelEl.textContent = "para o grande dia (23/10)";
+      labelEl.textContent = "para o grande dia";
     }
   }
 
