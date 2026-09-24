@@ -181,6 +181,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:640px){
   .section{padding:56px 0}
   .hero{min-height:620px}
+  .hero__bg{object-position:75% center}
   .stats{grid-template-columns:repeat(2,1fr)}
   .steps,.grid--2,.grid--3,.docs,.gallery,.organizers{grid-template-columns:1fr}
   .timeline__row{grid-template-columns:1fr;gap:4px;align-items:start}
