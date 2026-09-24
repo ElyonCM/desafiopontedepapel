@@ -60,10 +60,10 @@ document.addEventListener("keydown", (e) => {
 
     if (diff <= 0) {
       if (timerEl) {
-        timerEl.textContent = "🏁 00d 00h 00m 00s";
+        timerEl.textContent = "00d 00h 00m 00s";
         timerEl.style.animation = "none";
       }
-      if (labelEl) labelEl.textContent = "Evento finalizado!";
+      if (labelEl) labelEl.textContent = "para o grande dia";
       return;
     }
 
